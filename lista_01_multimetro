@@ -1,0 +1,27 @@
+public class multimetro {
+    public static void main(String[] args) {
+        float[] valor = { 5, 5.2f, 5.1f, 5, 5.2f };
+        if (desvio(valor) > 0.1 * calcula_media(valor)) {
+            System.out.println("O multimetro esta com problemas!");
+        } else {
+            System.out.println("O multimetro esta funcionando!");
+        }
+    }
+
+    public static float calcula_media(float[] vetor) {
+        float soma = 0;
+        for (int aux = 0 ; aux < vetor.length ; aux++) {
+            soma = soma + vetor[aux];
+        }
+        return soma / vetor.length;
+    }
+
+    public static float desvio(float[] vetor) {
+        float media = calcula_media(vetor);
+        float result = 0;
+        for (int aux = 0 ; aux < vetor.length ; aux++) {
+            result = result + (vetor[aux] - media) * (vetor[aux] - media);
+        }
+        return (float) Math.sqrt(result / vetor.length);
+    }
+}
